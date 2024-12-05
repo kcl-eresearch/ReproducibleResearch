@@ -1,3 +1,4 @@
 <!-- Who do researchers talk to for copyright and IP help? Got a website? -->
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 
 Intellectual property and licensing support for researchers is available from [King's Innovation Catalyst](https://www.kcl.ac.uk/research/kings-innovation-catalyst/how-to-work-with-us/ip-licensing).
