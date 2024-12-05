@@ -1,2 +1,3 @@
 <!-- Include information about your organisational data repository here. -->
 
+The [King’s Open Research Data System (KORDS)](https://www.kcl.ac.uk/researchsupport/managing/preserve) is our research data repository, providing long-term storage and access for datasets at project-end and supporting publications.

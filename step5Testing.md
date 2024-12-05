@@ -214,7 +214,7 @@ A good time for suggestions on where to learn R and Python. You've probably alre
 
 <!-- Got any organisation information on where to learn R or Python? Does your institute run carpentries training or data science help? Include it below. -->
 
-Introductory training from The University of Sheffield for learning R can be found here: https://www.sheffield.ac.uk/mash/stats-resources/r
+e-Research run introductory programming courses - details are on [the e-Research docs](https://docs.er.kcl.ac.uk/training/). In addition, the [Centre for Research Staff Development](https://internal.kcl.ac.uk/crsd/courses/on-demand-learning) provides access to SAGE Campus online courses, including introductory programming courses for R and Python. You may also be able to access training through the [Health Sciences Doctoral Training Centre](https://emckclac.sharepoint.com/sites/KPRH/SitePages/Knowledge%20and%20Intellectual%20Abilities.aspx), [Hub for Applied Bioinformatics](https://hab.sites.er.kcl.ac.uk/training), or [Innovation Scholars](https://innovationscholars.er.kcl.ac.uk/).
 
 If you are using a random number generator, take note of the seed number.
 
@@ -255,6 +255,7 @@ Include links from your institute about where to publish analysis pipelines - yo
 
 <!-- Got any organisation information on publishing analysis pipelines? Do you suggest github etc? Do you have a licencing person? Include it below. -->
 
+The [Research Software Engineering](https://docs.er.kcl.ac.uk/research_software_engineering/) team in e-Research can provide advice on publishing your research software or data analysis pipelines. 
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::: discussion

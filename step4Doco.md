@@ -112,6 +112,7 @@ Include the options for documentation platforms or elabnotebooks here from your 
 
 <!-- Got any organisation information on where researchers can save documentation or notes on their research? This could be eLabNotebooks, documentation platforms/wikis etc? Even google docs or onedrive can be good to point out.  Include it below. -->
 
+The [LabArchives](https://uk-mynotebook.labarchives.com/login) Electronic Lab Notebook is available to King's researchers as a centrally supported service. Training in how to make best use of it can be booked [via Skillsforge](https://training.kcl.ac.uk/kcl/#he/dev/eventDetails,;em,providerCode=LA,providerOrgAlias=kcl,number=2,;).
 
 
 ### Staff onboarding and offboarding

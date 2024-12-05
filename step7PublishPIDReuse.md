@@ -89,8 +89,7 @@ Include information around who mints DOIs at your organisation.
 
 <!-- Who do researchers talk to, to get a DOI minted? What other information around DOIs do you want to share? Include it below- you can delete the existing text. -->
 
-
-Often, your institute library will mint a DOI for you.
+The library can [create DOIs](https://www.kcl.ac.uk/researchsupport/research-impact) for outputs such as working papers, protocols, reports and other items which do not have a traditional publication route. 
 
 
 Journal publishers assign DOIs to electronic versions of individual articles & datasets.
@@ -153,6 +152,7 @@ Have you got an open network?
 
 <!-- Include information about open access/publishing here. -->
 
+Information about [open access publishing](https://www.kcl.ac.uk/researchsupport/open-access) is available from the library.
 
 
 Prior to sharing, ensure you have clearly defined the licence, IP and attribution attached to your work.
@@ -166,6 +166,7 @@ Link to your organisation's IP/Copyright person.
 
 <!-- Who do researchers talk to for copyright and IP help? Got a website? -->
 
+Intellectual property and licensing support for researchers is available from [King's Innovation Catalyst](https://www.kcl.ac.uk/research/kings-innovation-catalyst/how-to-work-with-us/ip-licensing).
 
 There are plenty of reasons you may not be able to share your data and pipelines openly. 
 
@@ -240,10 +241,12 @@ Link to your organisation's commercialisation team.
 
 <!-- Who do researchers talk to for copyright and IP help? Got a website? -->
 
+Intellectual property and licensing support for researchers is available from [King's Innovation Catalyst](https://www.kcl.ac.uk/research/kings-innovation-catalyst/how-to-work-with-us/ip-licensing).
 
 
 <!-- Include information about your commercialisation team here. -->
 
+[King's Innovation Catalyst](https://www.kcl.ac.uk/research/kings-innovation-catalyst) provides support for translational research, industry partnerships, and commercialisation.
 
 ::::::::::::::::::::::::::::::::::::::::::::::: discussion
 
@@ -266,6 +269,7 @@ create a citation for your work.
 
 <!-- Include information about your organisational data repository here. -->
 
+The [King’s Open Research Data System (KORDS)](https://www.kcl.ac.uk/researchsupport/managing/preserve) is our research data repository, providing long-term storage and access for datasets at project-end and supporting publications.
 
 [Here is a helpful guide to choosing a data repository](https://ardc.edu.au/resource/guide-to-choosing-a-data-repository/)
 
