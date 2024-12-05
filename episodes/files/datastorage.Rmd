@@ -1,5 +1,5 @@
 
 <!-- This is where you can write information on your organisation's data storage webpage and support contacts. Replace the text below with anything you like, and it will appear in relevant places in the lessons. -->
 
-Ask your IT department about Research data storage and consider a backup plan.
+e-Research provides a large-scale general-purpose data storage facility for active research projects via [CREATE RDS](https://docs.er.kcl.ac.uk/research_data/rds/). e-Research also provides [Trusted Research Environments (TREs)](https://docs.er.kcl.ac.uk/CREATE/TRE/tre/) for secure storage of sensitive data such as personally identifiable data. Information about [other data storage options](https://www.kcl.ac.uk/researchsupport/managing/store) is available via the library.
 
