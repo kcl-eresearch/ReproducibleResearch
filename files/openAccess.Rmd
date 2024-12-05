@@ -1,3 +1,3 @@
 <!-- Include information about open access/publishing here. -->
-
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 Information about [open access publishing](https://www.kcl.ac.uk/researchsupport/open-access) is available from the library.

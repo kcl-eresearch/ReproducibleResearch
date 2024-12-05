@@ -1,2 +1,2 @@
 <!-- Got any organisation information on statistics support or research methodology? Include it below. -->
-
+<!-- Referenced in step3MethodStats.Rmd -->
