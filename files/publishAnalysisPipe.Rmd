@@ -1,2 +1,3 @@
 <!-- Got any organisation information on publishing analysis pipelines? Do you suggest github etc? Do you have a licencing person? Include it below. -->
 
+The [Research Software Engineering](https://docs.er.kcl.ac.uk/research_software_engineering/) team in e-Research can provide advice on publishing your research software or data analysis pipelines. 

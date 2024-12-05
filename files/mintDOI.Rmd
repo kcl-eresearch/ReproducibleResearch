@@ -1,4 +1,3 @@
 <!-- Who do researchers talk to, to get a DOI minted? What other information around DOIs do you want to share? Include it below- you can delete the existing text. -->
 
-
-Often, your institute library will mint a DOI for you.
+The library can [create DOIs](https://www.kcl.ac.uk/researchsupport/research-impact) for outputs such as working papers, protocols, reports and other items which do not have a traditional publication route. 
