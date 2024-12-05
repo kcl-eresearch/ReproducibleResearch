@@ -25,9 +25,8 @@ Link to your institutional Data Management Planning Page
 
 
 
-
-
 <!-- This is where you can write information on your organisation's data management and data management plan webpage and support contacts. Replace the text below with anything you like, and it will appear in relevant places in the lessons. -->
+<!-- Referenced in step1Folders.Rmd -->
 
 The King's library pages have information on [creating a Data Management Plan](https://www.kcl.ac.uk/researchsupport/managing/plan), which you can do via [dmp.kcl.ac.uk](https://dmp.kcl.ac.uk/). The library also runs a course on managing your research data - sign up [via Skillsforge](https://training.kcl.ac.uk/kcl/#he.dev/eventDetails,;em,id=6ba499f1-416c-46ee-8ecb-f804a9fc0312%20).
 
@@ -90,8 +89,8 @@ You may get a question on recovery verses backup - have a chat to your storage t
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-
 <!-- This is where you can write information on your organisation's data storage webpage and support contacts. Replace the text below with anything you like, and it will appear in relevant places in the lessons. -->
+<!-- Referenced in step1Folders.Rmd -->
 
 e-Research provides a large-scale general-purpose data storage facility for active research projects via [CREATE RDS](https://docs.er.kcl.ac.uk/research_data/rds/). e-Research also provides [Trusted Research Environments (TREs)](https://docs.er.kcl.ac.uk/CREATE/TRE/tre/) for secure storage of sensitive data such as personally identifiable data. Information about [other data storage options](https://www.kcl.ac.uk/researchsupport/managing/store) is available via the library.
 

@@ -43,7 +43,7 @@ Prominent registries include:
 
 
 <!-- Got any organisation information on preregistration or registering protocols? Include it below. -->
-
+<!-- Referenced in step3MethodStats.Rmd -->
 
 
 ## Registered Reports
@@ -81,7 +81,7 @@ This really did come up time and time again when talking to researchers on how t
 
 
 <!-- Got any organisation information on statistics support or research methodology? Include it below. -->
-
+<!-- Referenced in step3MethodStats.Rmd -->
 
 
 ## Publishing your Protocol

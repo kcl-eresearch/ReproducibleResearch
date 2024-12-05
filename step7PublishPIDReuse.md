@@ -38,6 +38,7 @@ May be worth checking with your library or research office.
 
 
 <!-- Can you link to an internal 'what to do at the end of a project' checklist? Include it below. -->
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 
 
 # Persistent Identifiers
@@ -88,6 +89,7 @@ Include information around who mints DOIs at your organisation.
 
 
 <!-- Who do researchers talk to, to get a DOI minted? What other information around DOIs do you want to share? Include it below- you can delete the existing text. -->
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 
 The library can [create DOIs](https://www.kcl.ac.uk/researchsupport/research-impact) for outputs such as working papers, protocols, reports and other items which do not have a traditional publication route. 
 
@@ -151,7 +153,7 @@ Have you got an open network?
 
 
 <!-- Include information about open access/publishing here. -->
-
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 Information about [open access publishing](https://www.kcl.ac.uk/researchsupport/open-access) is available from the library.
 
 
@@ -165,6 +167,7 @@ Link to your organisation's IP/Copyright person.
 
 
 <!-- Who do researchers talk to for copyright and IP help? Got a website? -->
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 
 Intellectual property and licensing support for researchers is available from [King's Innovation Catalyst](https://www.kcl.ac.uk/research/kings-innovation-catalyst/how-to-work-with-us/ip-licensing).
 
@@ -240,11 +243,13 @@ Link to your organisation's commercialisation team.
 
 
 <!-- Who do researchers talk to for copyright and IP help? Got a website? -->
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 
 Intellectual property and licensing support for researchers is available from [King's Innovation Catalyst](https://www.kcl.ac.uk/research/kings-innovation-catalyst/how-to-work-with-us/ip-licensing).
 
 
 <!-- Include information about your commercialisation team here. -->
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 
 [King's Innovation Catalyst](https://www.kcl.ac.uk/research/kings-innovation-catalyst) provides support for translational research, industry partnerships, and commercialisation.
 
@@ -268,6 +273,7 @@ create a citation for your work.
 
 
 <!-- Include information about your organisational data repository here. -->
+<!-- Referenced in step7PublishPIDReuse.Rmd -->
 
 The [King’s Open Research Data System (KORDS)](https://www.kcl.ac.uk/researchsupport/managing/preserve) is our research data repository, providing long-term storage and access for datasets at project-end and supporting publications.
 
