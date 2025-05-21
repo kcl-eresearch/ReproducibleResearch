@@ -50,3 +50,6 @@ docs/
 po/*~
 
 renv/sandbox
+.DS_Store
+
+slides/*.html

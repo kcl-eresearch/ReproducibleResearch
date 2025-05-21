@@ -1,0 +1,225 @@
+---
+title: "Seven Steps to Reproducible (Computational) Research"
+author: "Liz Ing-Simmons"
+format: revealjs
+---
+
+## What is reproducibility?
+
+* definitions [TODO]
+* add images 
+* we'll mainly consider ...
+
+## Why does reproducibility matter?
+
+* reproducibility crisis
+* research should be trustworthy
+* avoid waste - wasted time regenerating data, or waste time building on work that isn't reproducible
+
+## Seven steps
+
+1. Planning to be organised
+2. Keeping data tidy
+3. Documentation
+4. Methodology and protocols
+5. Testing and controls
+6. Automation
+7. Publishing
+
+## Planning to be organised
+
+Before you start a project:
+* What data will you collect?
+* What code will you write?
+
+## Planning to be organised
+
+How will you organise your data / code?
+* Directory structure
+* File naming conventions
+  * e.g. project-specific abbreviations
+  * file names that are both human-readable and computer-readable
+
+## Planning to be organised: tools 🔧
+
+"Data Management Plans" are required by many[?] funders.
+Structure to document what data you will collect, where it will be stored, who is responsible
+Good opportunity to think about and document these things - and think about how data will be handled at end of the project (what can be deleted, what can be shared)
+
+## Planning to be organised: tools 🔧
+
+Project templates [TODO examples]
+
+## Keeping data tidy
+
+::: notes
+(this refers to text-based data inside files)
+:::
+
+*"each variable is a column, each observation is a row, and each type of observational unit is a table"*
+
+[Wickham, 2014](http://www.jstatsoft.org/v59/i10/)
+
+. . .
+
+* Tidy data facilitates analysis
+* Makes data cleaning easier
+* Works well with statistical tools
+
+## Keeping data tidy
+
+*"tidy datasets are all alike but every messy dataset is messy in its own way"*
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+library(tibble)
+classroom <- tribble(
+  ~name,    ~quiz1, ~quiz2, ~exam1,
+  "Billy",  NA,     "D",    "C",
+  "Suzy",   "F",    NA,     NA,
+  "Lionel", "B",    "C",    "B",
+  "Jenny",  "A",    "A",    "B"
+  )
+classroom
+```
+:::
+
+::: {.column width="50%"}
+
+```{r}
+tribble(
+  ~assessment, ~Billy, ~Suzy, ~Lionel, ~Jenny,
+  "quiz1",     NA,     "F",   "B",     "A",
+  "quiz2",     "D",    NA,    "C",     "A",
+  "exam1",     "C",    NA,    "B",     "B"
+  )
+```
+:::
+
+::::
+
+. . .
+
+* Compact and convenient for humans, but not for computers
+
+
+## Keeping data tidy
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r}
+library(tidyr)
+library(dplyr)
+
+classroom %>% 
+  pivot_longer(quiz1:exam1, names_to = "assessment", values_to = "grade") %>% 
+  arrange(name, assessment)
+```
+:::
+
+::: {.column width="60%"}
+
+:::{.incremental}
+* 3 variables, 12 observations, 36 values
+* Each combination of name and assessment is a single measured observation
+* Definition of a variable depends on the task
+* E.g. what if we wanted to compare quiz and exam scores?
+:::
+:::
+
+::::
+
+## Keeping data tidy: tools 🔧
+
+* Python: `pandas`, `polars`
+* R: `tidyr`, `dplyr`, `polars` (not yet stable)
+
+. . .
+
+‼️ but cleaning and tidying your data is no substitute for good planning!
+
+## Documentation
+
+[TODO - move later?]
+
+## Methodology and protocols
+
+Methods for wet lab work get a lot of attention, but less so for computational work!
+
+Key questions:
+
+* What did you do?
+* Why did you do it that way?
+
+## Methodology and protocols
+
+**What** did you do?
+
+* Scripts - document the actual code you ran
+* Computational environment - hardware, OS, package versions, random seeds
+  * Python: `python -m venv`, `virtualenv`, `pyenv`,...
+  * R: `renv`
+  * Conda
+  * Containers: Docker, Singularity,...
+  
+::: notes
+compare to running ad hoc commands on commandline / ad hoc analyses
+- e.g. renaming files, selecting columns/rows
+- e.g. how did you make that plot?
+:::
+
+## Methodology and protocols
+
+**Why** did you do it that way?
+
+* Version control commit messages 
+* Literate programming - combine code with text
+  * Jupyter notebooks, RMarkdown, Quarto...
+* Code reviews
+* Architectural decision records
+
+## Testing and controls
+
+* Data validation
+  * size and shape, data types, missing data
+  * checksums
+* Software testing
+  * unit tests
+  * snapshot testing - does this code still give the same output?
+  * integration testing - does everything still work together?
+
+## Automation
+
+✨Automate the boring things✨
+
+* Scripts for data cleaning / processing
+* Combine scripts into workflows: run a series of data analysis steps in order
+* Continuous integration - automatically run your tests
+
+## Automation: tools 🔧
+
+* Workflow managers
+  * Nextflow: lots of public workflows for bioinformatics
+  * Snakemake: Python-based, easy to create your own workflows
+* Continuous integration
+  * GitHub Actions: lots of templates
+
+::: notes
+Github Actions templates for e.g. building and running tests for a python package, for code linting and formatting, etc
+:::
+
+## Publishing
+
+* FAIR principles
+* persistent identifiers - how to get a DOI?
+* licensing
+* versioning
+
+
+
+
