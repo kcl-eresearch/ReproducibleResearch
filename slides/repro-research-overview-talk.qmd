@@ -1,40 +1,117 @@
 ---
 title: "Seven Steps to Reproducible (Computational) Research"
 author: "Liz Ing-Simmons"
-format: revealjs
+format: 
+  revealjs:
+    self-contained: true
 ---
 
 ## What is reproducibility?
 
-* definitions [TODO]
-* add images 
-* we'll mainly consider ...
+![*The Turing Way* project illustration by Scriberia](fig/reproducible-definit-93a8c9da9e70b9f2b8b165eda8b5fe74.png){width=700,fig-align="center"}
+
+::: {style="font-size: 50%;"}
+[The Turing Way Community & Scriberia (2024)](https://doi.org/10.5281/ZENODO.3332807), CC-BY 4.0.
+:::
+
+::: notes
+
+Different definitions of reproducibility have been used
+The one we'll focus on today is "same data, same analysis, same results"
+However having reproducible research often helps make your research replicable, robust, and generalisable too
+
+:::
+
+## The reproducibility crisis
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+![Most scientists have experienced failure to reproduce results.](fig/nature_repro_copy.png){width="85%"}
+
+::: {style="font-size: 50%;"}
+[Nature, 2016](https://doi.org/10.1038/533452a)
+:::
+
+::::
+
+:::: {.column width="50%"}
+
+* Studies that attempt replication have low success rates
+* Barriers include:
+  * lack of data or experimental reagents
+  * incomplete methods
+  * unresponsive original authors
+
+::::
+
+:::::
+
 
 ## Why does reproducibility matter?
 
-* reproducibility crisis
+A lack of reproducibility leads to:
+
+* Time, effort, and funding wasted on follow-up projects
+* Loss of trust in research
+* Potential for real harm
+
+
+::: notes
+
 * research should be trustworthy
 * avoid waste - wasted time regenerating data, or waste time building on work that isn't reproducible
+
+:::
+
+## Why does reproducibility matter?
+
+Personal benefits to working reproducibly:
+
+:::{.incremental}
+* Avoid disaster 
+* Make it easier to write your paper/thesis
+* Help people understand your work
+* Enable continuity of your research
+* Build your reputation
+:::
+
+:::{style="font-size: 50%;"}
+[*Five selfish reasons to work reproducibly*, Markowetz, 2015](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0850-7)
+:::
+
+::: notes
+
+disaster: data loss, analysis errors, paper retractions...
+
+:::
+
 
 ## Seven steps
 
 1. Planning to be organised
 2. Keeping data tidy
-3. Documentation
-4. Methodology and protocols
-5. Testing and controls
-6. Automation
+3. Methodology and protocols
+4. Testing and controls
+5. Automation
+6. Documentation
 7. Publishing
+
+:::{style="font-size: 50%;"}
+Source: [carpentries-incubator.github.io/ReproducibleResearch](https://carpentries-incubator.github.io/ReproducibleResearch)
+:::
 
 ## Planning to be organised
 
 Before you start a project:
+
 * What data will you collect?
 * What code will you write?
 
 ## Planning to be organised
 
 How will you organise your data / code?
+
 * Directory structure
 * File naming conventions
   * e.g. project-specific abbreviations
@@ -42,13 +119,24 @@ How will you organise your data / code?
 
 ## Planning to be organised: tools 🔧
 
-"Data Management Plans" are required by many[?] funders.
+:::{.incremental}
+* Data Management Plans
+  * outline how data will be looked after during and after the project 
+  * required by most major funders
+* Project templates
+  * many examples available - general and domain-specific
+  * typically separate documentation, code, raw data, results
+:::
+
+::: notes
+
 Structure to document what data you will collect, where it will be stored, who is responsible
-Good opportunity to think about and document these things - and think about how data will be handled at end of the project (what can be deleted, what can be shared)
+Includes any legal or ethical considerations for sensitive / identifiable data
+DMPs required by UKRI, Wellcome, DFG, also EU funding
 
-## Planning to be organised: tools 🔧
+Templates for biology, economics, etc
 
-Project templates [TODO examples]
+:::
 
 ## Keeping data tidy
 
@@ -130,6 +218,7 @@ classroom %>%
 * Definition of a variable depends on the task
 * E.g. what if we wanted to compare quiz and exam scores?
 :::
+
 :::
 
 ::::
@@ -137,15 +226,11 @@ classroom %>%
 ## Keeping data tidy: tools 🔧
 
 * Python: `pandas`, `polars`
-* R: `tidyr`, `dplyr`, `polars` (not yet stable)
+* R: `tidyr`, `dplyr`, `polars`(*not yet stable)
 
 . . .
 
-‼️ but cleaning and tidying your data is no substitute for good planning!
-
-## Documentation
-
-[TODO - move later?]
+‼️ but cleaning and tidying your data is no substitute for planning good data organisation in the first place!
 
 ## Methodology and protocols
 
@@ -160,13 +245,15 @@ Key questions:
 
 **What** did you do?
 
+:::{.incremental}
 * Scripts - document the actual code you ran
 * Computational environment - hardware, OS, package versions, random seeds
   * Python: `python -m venv`, `virtualenv`, `pyenv`,...
   * R: `renv`
   * Conda
   * Containers: Docker, Singularity,...
-  
+:::
+
 ::: notes
 compare to running ad hoc commands on commandline / ad hoc analyses
 - e.g. renaming files, selecting columns/rows
@@ -177,13 +264,34 @@ compare to running ad hoc commands on commandline / ad hoc analyses
 
 **Why** did you do it that way?
 
-* Version control commit messages 
-* Literate programming - combine code with text
+* Version control e.g. Git
+* Literate programming - combine code with text and outputs
   * Jupyter notebooks, RMarkdown, Quarto...
 * Code reviews
 * Architectural decision records
 
+::: notes
+
+- how many times have you tried something out, discarded it, and then done same again in a future project?
+
+- e.g. Git
+- good commit messages can include why you made change
+- Donald Knuth introduced the idea of literate programming in 1984
+  - higher quality code by forcing programmers to explicitly state their logic and reasoning
+  - keep documentation with the code - easier to restart work
+  - notebooks are a commonly used tool, but often not used to full potential
+- if you work collaboratively on a code base
+- process of having to make a merge request and receive a review forces you to explain your work
+- for larger projects, you can track decisions about the overall project using ADRs
+- e.g. why did you choose a particular package or implementation
+:::
+
+
 ## Testing and controls
+
+Is the data what we expect? Does the code do what it should?
+
+:::{.incremental}
 
 * Data validation
   * size and shape, data types, missing data
@@ -192,8 +300,19 @@ compare to running ad hoc commands on commandline / ad hoc analyses
   * unit tests
   * snapshot testing - does this code still give the same output?
   * integration testing - does everything still work together?
+:::
+
+::: notes
+
+For a wetlab scientist, doing controls for an experiment, calibrating hardware is normal
+For code?
+
+:::
+
 
 ## Automation
+
+. . .
 
 ✨Automate the boring things✨
 
@@ -213,13 +332,71 @@ compare to running ad hoc commands on commandline / ad hoc analyses
 Github Actions templates for e.g. building and running tests for a python package, for code linting and formatting, etc
 :::
 
+## Documentation
+
+*"Documentation is a love letter to your future self"*
+
+Damian Conway, *Perl Best Practices*, 2005
+
+. . .
+
+* Document how all these steps fit together
+* Think about what you'd need to tell a new project contributor
+* Or what you need to know when someone leaves
+
+::: notes
+
+You've made a plan, organised your work, documented your code, you have automated testing
+But if you won the lottery and quit your job tomorrow, would anyone else be able to carry on your project?
+Or if you get paper reviews back in six months, would it be easy to pick up and do the revisions?
+
+:::
+
+## Documentation: tools 🔧
+
+* `README` 
+* (Electronic) lab notebook
+  * LabArchives, Benchling, Notion, OneNote...
+* Project wiki
+
 ## Publishing
 
-* FAIR principles
-* persistent identifiers - how to get a DOI?
-* licensing
-* versioning
+. . .
+
+![FAIR principles](fig/fair.avif)
+
+:::{style="font-size: 50%;"}
+[Open Science Training Handbook](https://open-science-training-handbook.gitbook.io/book), CC0
+:::
+
+::: notes
+At the end of a project - hopefully - you'll publish it, maybe as a formal paper, or at least share it with others
+What do you need to think about at this stage to ensure reproducibility?
+
+* can people find your data and code? does it have metadata and an unique identifier?
+* is it retrievable by humans and machines using standard methods (not carrier pigeon)
+  * doesn't have to be open, but should have clarity around who can access
+* can data be opened with standard tools? does it use common vocabulary?
+  * does code give output in standard formats?
+* is there enough documentation? is there a license that tells people how they can use it?
+
+:::
 
 
+## Publishing: tools 🔧
+
+* Persistent identifiers e.g. DOI
+  * Data repositories can give a persistent identifier
+  * Code can also be submitted to e.g. Zenodo 
+  * DOIs can include a version number
+* Licensing 
+  * check funder requirements / recommendations
+  * [choosealicense.com](https://choosealicense.com/) can help you decide
+
+
+::: notes
+
+
+:::
 
 
