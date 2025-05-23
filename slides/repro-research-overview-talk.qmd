@@ -16,7 +16,10 @@ format:
 
 ::: notes
 
-Different definitions of reproducibility have been used
+Start by defining what I mean by reproducibility
+Different definitions of reproducibility have been used, and lots of related terms
+These are the definitions used by The Turing Way project
+They define reproducible as...
 The one we'll focus on today is "same data, same analysis, same results"
 However having reproducible research often helps make your research replicable, robust, and generalisable too
 
@@ -47,6 +50,19 @@ However having reproducible research often helps make your research replicable, 
 
 :::::
 
+::: notes
+
+You may have heard about a reproducibility crisis in science
+This has been discussed for a long time - this Nature survey of 1500 scientists found most had been unable to reproduce work
+- even their own work!
+
+Studies that set out to reproduce published papers have generally had low success rates
+- one [psychology replication project](https://www.science.org/doi/10.1126/science.aac4716) had 40% success
+- a [cancer biology](https://www.nature.com/articles/483531a) study had only 11% success
+
+Attempts at replication have found barriers to reproducibility
+:::
+
 
 ## Why does reproducibility matter?
 
@@ -59,8 +75,10 @@ A lack of reproducibility leads to:
 
 ::: notes
 
-* research should be trustworthy
 * avoid waste - wasted time regenerating data, or waste time building on work that isn't reproducible
+* loss of trust affects public perception
+* e.g. wasted resources doing clinical trials, diverted from something more promising
+* e.g. policy set based on non-reproducible research can have real world impact
 
 :::
 
@@ -82,7 +100,11 @@ Personal benefits to working reproducibly:
 
 ::: notes
 
-disaster: data loss, analysis errors, paper retractions...
+* disaster: data corruption/loss, analysis errors, paper retractions...
+* easier to write because you have a clear record of what you did
+* easier for people to understand work if they can play around with your code and data
+* if people can do that, can more easily build on your work
+* they will cite your papers, which builds your reputation
 
 :::
 
@@ -101,32 +123,47 @@ disaster: data loss, analysis errors, paper retractions...
 Source: [carpentries-incubator.github.io/ReproducibleResearch](https://carpentries-incubator.github.io/ReproducibleResearch)
 :::
 
-## Planning to be organised
+::: notes
+
+This talk is based on a longer workshop that sets out seven steps towards reproducibility
+The workshop has more activities and resources, so check it out for more
+Today I've tried to extract the key points from each step
+Focusing on computational research
+And identify some tools that can help with each step
+
+:::
+
+
+## 1. Planning to be organised
 
 Before you start a project:
 
 * What data will you collect?
 * What code will you write?
 
-## Planning to be organised
+## 1. Planning to be organised
+
+::: notes
+
+Once you know what data and code you expect to have, you should think about how to organise them
+How will you organise your files and folders?
+Also how you will name your files
+Readable by both humans and computers
+Y-M-D means sorting files alphabetically also sorts by date, which is often helpful
+define project specific abbreviations - e.g. for data sources, data types
+
+:::
 
 How will you organise your data / code?
 
 * Directory structure
 * File naming conventions
-  * e.g. project-specific abbreviations
   * file names that are both human-readable and computer-readable
+  * date formats - `YYYY-MM-DD` is best!
+  * project-specific abbreviations - be consistent
 
-## Planning to be organised: tools 🔧
 
-:::{.incremental}
-* Data Management Plans
-  * outline how data will be looked after during and after the project 
-  * required by most major funders
-* Project templates
-  * many examples available - general and domain-specific
-  * typically separate documentation, code, raw data, results
-:::
+## 1. Planning to be organised: tools 🔧
 
 ::: notes
 
@@ -138,15 +175,54 @@ Templates for biology, economics, etc
 
 :::
 
-## Keeping data tidy
+::::: {.columns}
+
+:::: {.column width="70%"}
+
+:::{.incremental}
+* Data Management Plans
+  * outline how data will be looked after during and after the project 
+  * required by most major funders
+* Project templates
+  * many examples available - general and domain-specific
+  * typically separate documentation, code, raw data, results
+:::
+
+::::
+
+:::: {.column width="30%"}
+
+:::{.fragment}
+
+![Example project template](fig/project-template.png)
+:::
+::::
+
+:::::
+
+
+## 2. Keeping data tidy
 
 ::: notes
-(this refers to text-based data inside files)
+
+What about organising the data itself?
+In this section I'm focusing on text data in a tabular format
+Not relevant in every project, but very common even if just metadata
+
+Hadley Wickham (statistician known for writing R packages) defined tidy data as follows
+- similar to third normal form for databases, if you're familiar with that - but reframed in language of statistics
+- facilitates analysis because it encourages you to think about your data in a structured way
+- what are the variables? what is the observational unit that you're interested in?
+- stats tools often expect data in this format
 :::
 
 *"each variable is a column, each observation is a row, and each type of observational unit is a table"*
 
+:::{style="font-size: 50%;"}
 [Wickham, 2014](http://www.jstatsoft.org/v59/i10/)
+
+(See also the [third normal form](https://en.wikipedia.org/wiki/Third_normal_form) for databases.)
+:::
 
 . . .
 
@@ -154,9 +230,26 @@ Templates for biology, economics, etc
 * Makes data cleaning easier
 * Works well with statistical tools
 
-## Keeping data tidy
+## 2. Keeping data tidy
+
+::: notes
+
+Let's look at an example
+This is data from an imaginary class
+4 students, grades from two in-class quizzes and one exam
+These two tables show the same data in different ways
+NB we have some missing data.
+
+Data is compact and convenient for humans - e.g. for inputting data
+But maybe not for doing analysis on it
+:::
+
 
 *"tidy datasets are all alike but every messy dataset is messy in its own way"*
+
+:::{style="font-size: 50%;"}
+[Wickham, 2014](http://www.jstatsoft.org/v59/i10/)
+:::
 
 . . .
 
@@ -171,7 +264,7 @@ classroom <- tribble(
   "Suzy",   "F",    NA,     NA,
   "Lionel", "B",    "C",    "B",
   "Jenny",  "A",    "A",    "B"
-  )
+  ) %>% as.data.frame()
 classroom
 ```
 :::
@@ -184,18 +277,35 @@ tribble(
   "quiz1",     NA,     "F",   "B",     "A",
   "quiz2",     "D",    NA,    "C",     "A",
   "exam1",     "C",    NA,    "B",     "B"
-  )
+  ) %>% as.data.frame()
 ```
 :::
 
 ::::
 
-. . .
 
-* Compact and convenient for humans, but not for computers
+## 2. Keeping data tidy
 
+::: notes
 
-## Keeping data tidy
+This is the same dataset re-shaped to follow the tidy data principles
+Each column is a variable
+Each row - each combination of name and assessment - is a single measured observation
+This format allows us to easily join data e.g. to convert letter grades to points
+or group data by student or by assessment and calculate an average
+`split-apply-combine`
+The other formats would require different approaches to do one vs the other
+Works well for input to statistical modelling
+
+NB definition of a variable depends on the task
+* E.g. what if we wanted to compare quiz and exam scores? would need to split that column into two variables
+
+Not suitable for everything
+* more compact formats might be better for manual data entry
+* other formats for specific software tools
+* helpful to think about structure of data
+
+:::
 
 :::: {.columns}
 
@@ -206,7 +316,8 @@ library(dplyr)
 
 classroom %>% 
   pivot_longer(quiz1:exam1, names_to = "assessment", values_to = "grade") %>% 
-  arrange(name, assessment)
+  arrange(name, assessment) %>% 
+  as.data.frame()
 ```
 :::
 
@@ -223,7 +334,17 @@ classroom %>%
 
 ::::
 
-## Keeping data tidy: tools 🔧
+## 2. Keeping data tidy: tools 🔧
+
+::: notes
+
+Tools for reshaping and analysing data
+NB polars is supposed to be really fast
+
+Plan your data organisation so you don't have to do too much cleaning!
+e.g. think about what your variables should be, how you will handle missing data
+
+:::
 
 * Python: `pandas`, `polars`
 * R: `tidyr`, `dplyr`, `polars`(*not yet stable)
@@ -232,111 +353,219 @@ classroom %>%
 
 ‼️ but cleaning and tidying your data is no substitute for planning good data organisation in the first place!
 
-## Methodology and protocols
+## 3. Methodology and protocols
 
-Methods for wet lab work get a lot of attention, but less so for computational work!
+::: notes
+
+We've planned and now gathered our data - what are we going to do with it? --> methods
+Coming from a biology background, I think methods for experimental work get a lot of attention
+- but less so for computational work, although this is changing
+Key questions - what and why?
+:::
 
 Key questions:
 
 * What did you do?
 * Why did you do it that way?
 
-## Methodology and protocols
+## 3. Methodology and protocols
+
+::: notes
+Common to run ad hoc commands on commandline
+e.g. renaming files, selecting columns/rows
+or ad hoc plotting
+Put all those ad hoc analyses in a script and save them
+Also track computational environment
+:::
 
 **What** did you do?
 
-:::{.incremental}
 * Scripts - document the actual code you ran
-* Computational environment - hardware, OS, package versions, random seeds
-  * Python: `python -m venv`, `virtualenv`, `pyenv`,...
-  * R: `renv`
-  * Conda
-  * Containers: Docker, Singularity,...
-:::
+
+. . . 
+
+* Computational environment 
+  * random seeds
+  * package versions
+  * hardware
+  * operating system
+
+## 3. Methodology and protocols: tools 🔧
 
 ::: notes
-compare to running ad hoc commands on commandline / ad hoc analyses
-- e.g. renaming files, selecting columns/rows
-- e.g. how did you make that plot?
+Virtual environments - specific software and package versions
+Conda can be used for Python but also for other software
+Make sure to record the package versions you used and include these in your documentation
+This helps when writing your paper!
 :::
 
-## Methodology and protocols
+Virtual environments
 
-**Why** did you do it that way?
+* Python: `python -m venv` 
+  * use `pip freeze` to record versions
+* R: `renv`
+  * use `renv::snapshot()` to record versions
+* Conda
+  * use `conda env export` to record versions
 
-* Version control e.g. Git
-* Literate programming - combine code with text and outputs
-  * Jupyter notebooks, RMarkdown, Quarto...
-* Code reviews
-* Architectural decision records
+  
+## 3. Methodology and protocols: tools 🔧
+
+::: notes
+If you need to go beyond just a specific Python or R version and package versions you need for your project
+Containers:
+- containers based on different operating systems
+- system libraries that software depends on
+- a larger subset of your computational environment
+Or e.g. for a more complex project with multiple software tools
+Docker is most well known, Singularity is common on HPC
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Containers
+
+* Docker
+* Singularity / Apptainer
+:::
+
+::: {.column width="50%"}
+![Multiple Docker containers running on the same machine](fig/container-what-is-container.avif)
+:::
+::::
+
+## 3. Methodology and protocols
 
 ::: notes
 
 - how many times have you tried something out, discarded it, and then done same again in a future project?
 
 - e.g. Git
+- add your experiments to your version control history
 - good commit messages can include why you made change
 - Donald Knuth introduced the idea of literate programming in 1984
   - higher quality code by forcing programmers to explicitly state their logic and reasoning
   - keep documentation with the code - easier to restart work
   - notebooks are a commonly used tool, but often not used to full potential
+- on a similar note, writing documentation for your custom functions makes the methods clearer
+- this is often kept alongside the code as docstrings 
 - if you work collaboratively on a code base
 - process of having to make a merge request and receive a review forces you to explain your work
 - for larger projects, you can track decisions about the overall project using ADRs
 - e.g. why did you choose a particular package or implementation
+
 :::
 
+**Why** did you do it that way?
 
-## Testing and controls
+:::{.incremental}
+
+* Version control e.g. Git
+* Literate programming - combine code with text and outputs
+  * Jupyter notebooks, RMarkdown, Quarto...
+  * Code documentation (docstrings)
+* Code reviews
+* Architectural decision records
+
+:::
+
+## 4. Testing and controls
+
+::: notes
+For a wetlab scientist, doing controls for an experiment, calibrating hardware is routine
+For code, these steps can be overlooked
+
+Validate data by using checksums to check for corruption or truncation after transfers
+But also check size, shape, data types, is there missing data (you should know how you will handle this!)
+The tools we talked about for tidying data can also be used for data validation
+
+Code:
+- different ways to test your code
+- unit tests: is the output of this function what I expect given this input? Key for validating code does the right thing
+- snapshots: workflows or code that's not easy to unit test: is the output the same as before?
+- integration testing: for bigger projects with multiple components - does the workflow still run properly? 
+
+- programming languages have their own tools for writing tests 
+- too many to go into here!
+- e.g. pytest or unittest for python, testthat for R
+:::
 
 Is the data what we expect? Does the code do what it should?
 
 :::{.incremental}
 
 * Data validation
-  * size and shape, data types, missing data
   * checksums
+  * size and shape, data types, missing data
 * Software testing
-  * unit tests
-  * snapshot testing - does this code still give the same output?
+  * unit tests - does this function do what it should do?
+  * snapshot testing - does this code still give the *same* output?
   * integration testing - does everything still work together?
 :::
 
+## 5. Automation
+
 ::: notes
 
-For a wetlab scientist, doing controls for an experiment, calibrating hardware is normal
-For code?
-
+That probably sounds like a lot to think about and remember
+Luckily, a lot of these things can be automated
+Automation is great - it saves you time and ensures that things are done the same way every time
+Scripts can be developed to automate data cleaning and processing
+Combine scripts into workflows 
+Automatically re-run necessary steps for new datasets or changes in analysis code
+For software projects, continuous integration lets you automatically re-run tests after changes to the code
 :::
-
-
-## Automation
 
 . . .
 
 ✨Automate the boring things✨
 
+. . . 
+
 * Scripts for data cleaning / processing
 * Combine scripts into workflows: run a series of data analysis steps in order
 * Continuous integration - automatically run your tests
 
-## Automation: tools 🔧
+## 5. Automation: tools 🔧
 
 * Workflow managers
-  * Nextflow: lots of public workflows for bioinformatics
-  * Snakemake: Python-based, easy to create your own workflows
+  * [Nextflow](https://www.nextflow.io/): lots of public workflows for bioinformatics
+  * [Snakemake](https://snakemake.readthedocs.io/en/stable/): Python-based, easy to create your own workflows
 * Continuous integration
-  * GitHub Actions: lots of templates
+  * [GitHub Actions](https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions): lots of templates
 
 ::: notes
+
+Most commonly used workflow managers that I know of are Nextflow and Snakemake
+Nextflow is widely used for bioinformatics in particular, because there's a repository of pre-made workflows for common tasks
+So it's easy to get started with
+Snakemake is another tool I've used
+Not as many pre-made workflows
+Python-based, so easy to learn and build your own workflows
+
+Most software projects are probably using Github
 Github Actions templates for e.g. building and running tests for a python package, for code linting and formatting, etc
 :::
 
-## Documentation
+## 6. Documentation
+
+::: notes
+
+You've made a plan, organised your work, documented your code, you have automated testing
+But if you won the lottery and quit your job tomorrow, would anyone else be able to carry on your project?
+Or if you're unlucky and get paper reviews back after six months, would it be easy to pick up and do the revisions?
+
+Big picture documentation
+Specifics will depend on the project
+Might include tutorial or walkthrough
+:::
 
 *"Documentation is a love letter to your future self"*
 
+:::{style="font-size: 50%;"}
 Damian Conway, *Perl Best Practices*, 2005
+:::
 
 . . .
 
@@ -344,22 +573,43 @@ Damian Conway, *Perl Best Practices*, 2005
 * Think about what you'd need to tell a new project contributor
 * Or what you need to know when someone leaves
 
+
+## 6. Documentation: tools 🔧
+
 ::: notes
 
-You've made a plan, organised your work, documented your code, you have automated testing
-But if you won the lottery and quit your job tomorrow, would anyone else be able to carry on your project?
-Or if you get paper reviews back in six months, would it be easy to pick up and do the revisions?
+You might just need a really good README - for a small project
+Long data analysis project with lots of experiments - a lab notebook
+Bigger collaborative project - project wiki with your ADRs, collaborator guidelines, etc
+Developing a package - project website using e.g. `readthedocs` - code docs plus tutorials and background info
 
 :::
 
-## Documentation: tools 🔧
-
+:::{.incremental}
 * `README` 
-* (Electronic) lab notebook
+* Electronic lab notebook
   * LabArchives, Benchling, Notion, OneNote...
 * Project wiki
+* Project website with code documentation, tutorials, etc
+  * e.g. Read the Docs
 
-## Publishing
+:::
+
+## 7. Publishing
+
+::: notes
+At the end of a project - hopefully - you'll publish it, maybe as a formal paper, or at least share it with others
+What do you need to think about at this stage to ensure reproducibility?
+
+* can people find your data and code? does it have metadata and an unique identifier?
+* is it retrievable by humans and machines using standard methods?
+  * not a screenshot embedded in a pdf... 
+  * doesn't have to be open, but should have clarity around who can access
+* can data be opened with standard tools? does it use common vocabulary?
+  * does code give output in standard formats?
+* is there enough documentation? is there a license that tells people how they can use it?
+
+:::
 
 . . .
 
@@ -369,23 +619,10 @@ Or if you get paper reviews back in six months, would it be easy to pick up and 
 [Open Science Training Handbook](https://open-science-training-handbook.gitbook.io/book), CC0
 :::
 
-::: notes
-At the end of a project - hopefully - you'll publish it, maybe as a formal paper, or at least share it with others
-What do you need to think about at this stage to ensure reproducibility?
 
-* can people find your data and code? does it have metadata and an unique identifier?
-* is it retrievable by humans and machines using standard methods (not carrier pigeon)
-  * doesn't have to be open, but should have clarity around who can access
-* can data be opened with standard tools? does it use common vocabulary?
-  * does code give output in standard formats?
-* is there enough documentation? is there a license that tells people how they can use it?
+## 7. Publishing: tools 🔧
 
-:::
-
-
-## Publishing: tools 🔧
-
-* Persistent identifiers e.g. DOI
+* Persistent identifiers (e.g. DOI)
   * Data repositories can give a persistent identifier
   * Code can also be submitted to e.g. Zenodo 
   * DOIs can include a version number
@@ -393,10 +630,65 @@ What do you need to think about at this stage to ensure reproducibility?
   * check funder requirements / recommendations
   * [choosealicense.com](https://choosealicense.com/) can help you decide
 
-
 ::: notes
 
+Already discussed some things you can do to make your research FAIR
+- documentation, planning how to share data
+A couple of specific things to think about at this stage
+- persistent identifiers
+- licensing
 
 :::
 
+## 7. Publishing: find out more!
+
+**Software Discovery, Publication and Citation** 
+
+Alexander Struck & Stephan Druskat
+
+‼️ Save the date - 19th June at 1pm
+
+
+## Summary
+
+1. Planning to be organised
+2. Keeping data tidy
+3. Methodology and protocols
+4. Testing and controls
+5. Automation
+6. Documentation
+7. Publishing
+
+:::{style="font-size: 50%;"}
+Source: [carpentries-incubator.github.io/ReproducibleResearch](https://carpentries-incubator.github.io/ReproducibleResearch)
+:::
+
+::: notes
+Back to the seven steps
+Every project is different
+Impossible to cover everything that might be important or all the tools available
+Hopefully this provides a framework to start thinking about how you can ensure that your research is reproducible
+And can benefit from that reproducibility both in your everyday work
+And by making your project something that other people can build on and reuse
+
+Also wanted to acknowledge again the workshop that this presentation is derived from
+Happy to take questions, also suggestions of tools or approaches you've found useful
+
+:::
+
+## Summary
+
+1. Planning to be organised
+2. Keeping data tidy
+3. Methodology and protocols
+4. Testing and controls
+5. Automation
+6. Documentation
+7. Publishing
+
+:::{#title-slide .center}
+:::{style="font-size: 150%;"}
+**Questions?**
+:::
+:::
 
