@@ -134,14 +134,14 @@ And identify some tools that can help with each step
 :::
 
 
-## 1. Planning to be organised
+## 1. Planning to be organised 🗺️
 
 Before you start a project:
 
 * What data will you collect?
 * What code will you write?
 
-## 1. Planning to be organised
+## 1. Planning to be organised 🗺️
 
 ::: notes
 
@@ -201,7 +201,7 @@ Templates for biology, economics, etc
 :::::
 
 
-## 2. Keeping data tidy
+## 2. Keeping data tidy 🧹
 
 ::: notes
 
@@ -230,7 +230,7 @@ Hadley Wickham (statistician known for writing R packages) defined tidy data as 
 * Makes data cleaning easier
 * Works well with statistical tools
 
-## 2. Keeping data tidy
+## 2. Keeping data tidy 🧹
 
 ::: notes
 
@@ -284,7 +284,7 @@ tribble(
 ::::
 
 
-## 2. Keeping data tidy
+## 2. Keeping data tidy 🧹
 
 ::: notes
 
@@ -353,7 +353,7 @@ e.g. think about what your variables should be, how you will handle missing data
 
 ‼️ but cleaning and tidying your data is no substitute for planning good data organisation in the first place!
 
-## 3. Methodology and protocols
+## 3. Methodology and protocols 💻
 
 ::: notes
 
@@ -368,7 +368,7 @@ Key questions:
 * What did you do?
 * Why did you do it that way?
 
-## 3. Methodology and protocols
+## 3. Methodology and protocols 💻
 
 ::: notes
 Common to run ad hoc commands on commandline
@@ -435,7 +435,7 @@ Containers
 :::
 ::::
 
-## 3. Methodology and protocols
+## 3. Methodology and protocols 💻
 
 ::: notes
 
@@ -470,7 +470,7 @@ Containers
 
 :::
 
-## 4. Testing and controls
+## 4. Testing and controls ✅
 
 ::: notes
 For a wetlab scientist, doing controls for an experiment, calibrating hardware is routine
@@ -504,7 +504,7 @@ Is the data what we expect? Does the code do what it should?
   * integration testing - does everything still work together?
 :::
 
-## 5. Automation
+## 5. Automation 🤖
 
 ::: notes
 
@@ -519,7 +519,7 @@ For software projects, continuous integration lets you automatically re-run test
 
 . . .
 
-✨Automate the boring things✨
+✨ Automate the boring things 
 
 . . . 
 
@@ -548,7 +548,7 @@ Most software projects are probably using Github
 Github Actions templates for e.g. building and running tests for a python package, for code linting and formatting, etc
 :::
 
-## 6. Documentation
+## 6. Documentation 🗒️
 
 ::: notes
 
@@ -595,7 +595,7 @@ Developing a package - project website using e.g. `readthedocs` - code docs plus
 
 :::
 
-## 7. Publishing
+## 7. Publishing 📕
 
 ::: notes
 At the end of a project - hopefully - you'll publish it, maybe as a formal paper, or at least share it with others
