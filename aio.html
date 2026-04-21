@@ -6,21 +6,27 @@
 <title>7 Steps towards Reproducible Research: All in One View</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/themetoggle.js"></script><link rel="stylesheet" type="text/css" href="assets/styles.css">
-<script src="assets/scripts.js" type="text/javascript"></script><!-- mathjax --><script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      config: ["MMLorHTML.js"],
-      jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML", "output/PreviewHTML"],
-      extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
-      TeX: {
-        extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
-      },
-      tex2jax: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [ ['$$','$$'], ['\\[', '\\]'] ],
-        processEscapes: true
-      }
-    });
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="favicons/incubator/apple-touch-icon.png">
+<script src="assets/scripts.js" type="text/javascript"></script><!-- mathjax --><!-- NOTE: https://docs.mathjax.org/en/latest/output/mathml.html#mathml-support --><!-- Changes from V2 to V4: https://mathjax.github.io/MathJax-demos-web/convert-configuration/convert-configuration.html
+        Jax output/NativeMML is not yet implemented
+        Jax output/PreviewHTML is not yet implemented
+        Extension fast-preview is not yet implemented (but may be in a future release)
+    --><script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [ ['$$','$$'], ['\\[', '\\]'] ],
+            processEscapes: true,
+            packages: ['base', 'ams', 'noerrors', 'noundefined']
+        },
+        options: {
+            ignoreHtmlClass: 'tex2jax_ignore',
+            processHtmlClass: 'tex2jax_process'
+        },
+        loader: {
+            load: ['a11y/assistive-mml', '[tex]/noerrors']
+        }
+    };
+    </script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="favicons/incubator/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicons/incubator/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicons/incubator/favicon-16x16.png">
 <link rel="manifest" href="favicons/incubator/site.webmanifest">
@@ -47,8 +53,8 @@
       </div>
     </div>
     <div class="selector-container">
-      <div id="theme-selector">
-        <li class="nav-item dropdown" id="theme-button-list">
+      <menu class="theme-selector" id="theme-selector-menu">
+<li class="nav-item dropdown theme-button-list" id="theme-button-list-menu">
           <button class="btn btn-link nav-link px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
             <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg><i data-feather="chevron-down"></i>
           </button>
@@ -73,10 +79,8 @@
             </li>
           </ul>
 </li>
-      </div>
-
-
-      <div class="dropdown" id="instructor-dropdown">
+    </menu>
+<div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Learner View <i data-feather="chevron-down"></i>
         </button>
@@ -142,29 +146,18 @@
     <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div>
 <!--/div.container-fluid -->
-</nav><div class="col-md-12 mobile-title">
-  7 Steps towards Reproducible Research
-</div>
-
-<aside class="col-md-12 lesson-progress"><div style="width: %" class="percentage">
-    %
-  </div>
-  <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: %" aria-valuenow="" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-</aside><div class="container">
+</nav><div class="container">
       <div class="row">
         <!-- START: inst/pkgdown/templates/navbar.html -->
 <div id="sidebar-col" class="col-lg-4">
   <div id="sidebar" class="sidebar">
-      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
+      <nav aria-labelledby="flush-collapse-chapters-toggle"><button role="button" aria-label="Collapse" alt="Collapse" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
           <div class="row mobile-row" id="theme-row-mobile">
-            <div class="col" id="theme-selector">
-              <li class="nav-item dropdown" id="theme-button-list">
+            <menu class="col theme-selector" id="theme-selector-sidebar">
+<li class="nav-item dropdown theme-button-list" id="theme-button-list-sidebar">
                 <button class="btn btn-link nav-link px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
                   <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg><span class="d-lg-none ms-1" id="bd-theme-text">Toggle Theme</span>
                 </button>
@@ -189,19 +182,19 @@
                   </li>
                 </ul>
 </li>
-            </div>
-          </div>
+            </menu>
+</div>
           <div class="row mobile-row">
             <div class="col">
               <div class="sidenav-view-selector">
-                <div class="accordion accordion-flush" id="accordionFlush9">
+                <div class="accordion accordion-flush" id="accordion-instructor-toggle">
                   <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingNine">
-                      <button class="accordion-button collapsed" id="instructor" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+                    <h2 class="accordion-header" id="flush-heading-instructor-toggle">
+                      <button class="accordion-button collapsed" id="instructor" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-instructor-toggle" aria-expanded="false" aria-controls="flush-collapse-instructor-toggle">
                         <i id="eye" aria-hidden="true" class="icon" data-feather="eye"></i> Learner View
                       </button>
                     </h2>
-                    <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlush2">
+                    <div id="flush-collapse-instructor-toggle" class="accordion-collapse collapse" data-bs-parent="#accordion-instructor-toggle">
                       <div class="accordion-body">
                         <a href="instructor/aio.html">Instructor View</a>
                       </div>
@@ -219,15 +212,15 @@
 </div>
 <!--/div.mobile-row -->
 
-          <div class="accordion accordion-flush" id="accordionFlush11">
+          <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
 
-              <button id="chapters" class="accordion-button show" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven">
-                <h2 class="accordion-header chapters" id="flush-headingEleven">
+              <button id="chapters" class="accordion-button show" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-chapters-toggle" aria-expanded="false" aria-controls="flush-collapse-chapters-toggle">
+                <h2 class="accordion-header chapters" id="flush-heading-chapters-toggle">
                   EPISODES
                 </h2>
               </button>
-              <div id="flush-collapseEleven" class="accordion-collapse show collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlush11">
+              <div id="flush-collapse-chapters-toggle" class="accordion-collapse show collapse" data-bs-parent="#accordion-chapters-toggle">
 
                 <div class="accordion-body">
                   <div class="accordion accordion-flush" id="accordionFlush1">
@@ -379,14 +372,14 @@
             </div>
 
             <hr class="half-width">
-<div class="accordion accordion-flush lesson-resources" id="accordionFlush12">
+<div class="accordion accordion-flush lesson-resources" id="accordion-resources-toggle">
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwelve">
-                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                <h2 class="accordion-header" id="flush-heading-resources-toggle">
+                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-resources-toggle" aria-expanded="false" aria-controls="flush-collapse-resources-toggle">
                     RESOURCES
                   </button>
                 </h2>
-                <div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlush12">
+                <div id="flush-collapse-resources-toggle" class="accordion-collapse collapse" data-bs-parent="#accordion-resources-toggle">
                   <div class="accordion-body">
                     <ul>
 <li>
@@ -427,11 +420,11 @@
         <!-- START: inst/pkgdown/templates/content-extra.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <main id="main-content" class="main-content"><div class="container lesson-content">
-        
+        <h1>All in One View</h1>
         
 <section id="aio-introduction"><p>Content from <a href="introduction.html">What is Reproducible Research?</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -559,7 +552,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-whydoesRRmatter"><p>Content from <a href="whydoesRRmatter.html">Why does Reproducibility matter?</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/whydoesRRmatter.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -803,7 +796,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-introofRRthings"><p>Content from <a href="introofRRthings.html">Introducing 7 Steps towards Reproducible Research</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/introofRRthings.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -822,7 +815,7 @@ reproducibility into our workflows.</p>
 Reuse</p></li>
 </ol></section><section id="aio-step1Folders"><p>Content from <a href="step1Folders.html">Step 1 - Planning to be organised</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/step1Folders.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1082,7 +1075,7 @@ derived. Where did this media come from?”.</p></li>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
 <p>A great place to start is:</p>
 <p>Download a folder template and start using it!</p>
 <p>Another idea is to put a copy of your raw data somewhere secure and
@@ -1098,7 +1091,7 @@ files.</p></li>
 <li><p>Check your folders are being backed up.</p></li>
 </ul>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
+<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
 <p>Your next move can be:</p>
 <p>Ensure all your projects are well organised. This could extend to
 projects across your research group.</p>
@@ -1217,7 +1210,7 @@ any links that you are not going to use.
  -->
 </div></section><section id="aio-step2TidyFiles"><p>Content from <a href="step2TidyFiles.html">Step 2 - Keeping your files Tidy and Organised</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/step2TidyFiles.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1517,12 +1510,12 @@ a data file structure by CESSDA</a></p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
 <p>A great place to start is:</p>
 <p>Decide how to handle missing data</p>
 <p>Use YYYY-MM-DD for dates</p>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
+<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
 <p>Your next move can be:</p>
 <p>You can start to work in a data science language such as R or Python.
 <a href="https://software-carpentry.org/lessons/" class="external-link">The Carpentries</a>
@@ -1600,7 +1593,7 @@ any links that you are not going to use.
 </div>
 </div></section><section id="aio-step3MethodStats"><p>Content from <a href="step3MethodStats.html">Step 3 - Methodology and Protocols</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/step3MethodStats.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1737,14 +1730,14 @@ protocol journals and protocol repositories (at 23:33).</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
 <p>A great place to start is:</p>
 <p>Learning about how preregistration and registering protocols work by
 checking out some of these <a href="https://www.youtube.com/@reproducibiliteach/videos" class="external-link">ReproducibiliTeach
 videos</a> or check out this <a href="https://book.the-turing-way.org/reproducible-research/rdm/rdm-methods.html?highlight=protocol#open-methods-protocols" class="external-link">The
 Turing Way page on Methods and Protocols</a></p>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
+<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
 <p>Your next move can be:</p>
 <p>Get started on publishing that protocol and prepublication! You can
 use <a href="https://youtu.be/aKiXFzj15dg" class="external-link">How to write a reusable,
@@ -1826,7 +1819,7 @@ any links that you are not going to use.
  -->
 </div></section><section id="aio-step4Doco"><p>Content from <a href="step4Doco.html">Step 4 - Documentation and writing it down</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/step4Doco.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2213,7 +2206,7 @@ that produced a derived file?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>A common way is to name your files with a number at the front, so
 1_rawdata.csv, 2_cleandata.csv, 3_analysisdata.csv etc.</p>
@@ -2268,7 +2261,7 @@ similar paper was published with contradicting results.<a class="anchor" aria-la
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Thankfully, we can now do this! We can refer to our notes with our
 detailed methods, analysis pipelines and have links to where our data is
@@ -2311,7 +2304,7 @@ Reports, Volume 6, Issue 5, Pages 779-781, <a href="https://doi.org/10.1016/j.ce
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
 <p>A great place to start is:</p>
 <p>Open a document and start a diary. You can write at the end of the
 day what you did, any results, anything you got stuck on, and any notes
@@ -2320,7 +2313,7 @@ to yourself.</p>
 anywhere, external hard drive etc).</p>
 <p>That’s it. That’s a good start.</p>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
+<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
 <p>Time to <strong><em>get detailed</em></strong>. Add some of the
 information from <a href="step4Doco.html#expanding-into-details">Expanding into
 details</a></p>
@@ -2329,7 +2322,7 @@ and Metadata</a></p>
 <p>You can find a list of <a href="https://en.wikipedia.org/wiki/List_of_electronic_laboratory_notebook_software_packages" class="external-link">eLabnotebooks
 here</a>.</p>
 </div>
-<div id="nav-tabpanel-1-3" class="tab-pane" aria-labelledby="nav-tab-1-3" role="tabpanel">
+<div id="nav-tabpanel-1-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-3">
 <p>Your next move can be:</p>
 <p>Set up Standard Operating Procedures and maintained Data Management
 Plans for your projects.</p>
@@ -2430,7 +2423,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-step5Testing"><p>Content from <a href="step5Testing.html">Step 5 - Testing and Controls</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/step5Testing.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2976,7 +2969,7 @@ any links that you are not going to use.
  -->
 </div></section><section id="aio-step6Automate"><p>Content from <a href="step6Automate.html">Step 6 - Automation</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/step6Automate.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3160,11 +3153,11 @@ data.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
 <p>A great place to start is:</p>
 <p>Automate a single thing.</p>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
+<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
 <p>Your next move can be:</p>
 <p>Keep automating! It may be worth talking to your organisation’s
 technical team to find out what licences are available or tools they
@@ -3228,7 +3221,7 @@ any links that you are not going to use.
  -->
 </div></section><section id="aio-step7PublishPIDReuse"><p>Content from <a href="step7PublishPIDReuse.html">Step 7 - Publishing, Persistent Identifiers and Preparing for Reuse</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/step7PublishPIDReuse.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3414,14 +3407,14 @@ here</a></p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
 <p>The data has sufficiently rich metadata and a unique and persistent
 identifier to be easily discovered by others. This includes assigning a
 persistent identifier (like a DOI or Handle), having rich metadata to
 describe the data and making sure it is findable through disciplinary
 local or international discovery portals.</p>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
+<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
 <p>The data is retrievable by humans and machines through a standardised
 communication protocol, with authentication and authorisation where
 necessary. The data does not necessarily have to be open. Data can be
@@ -3429,7 +3422,7 @@ sensitive due to privacy concerns, national security or commercial
 interests. When it’s not able to be open, there should be clarity and
 transparency around the conditions governing access and reuse.</p>
 </div>
-<div id="nav-tabpanel-1-3" class="tab-pane" aria-labelledby="nav-tab-1-3" role="tabpanel">
+<div id="nav-tabpanel-1-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-3">
 <p>The associated data and metadata uses a ‘formal, accessible, shared,
 and broadly applicable language for knowledge representation’. This
 involves using community accepted languages, formats and vocabularies in
@@ -3437,7 +3430,7 @@ the data and metadata. Metadata should reference and describe
 relationships to other data, metadata and information through
 identifiers.</p>
 </div>
-<div id="nav-tabpanel-1-4" class="tab-pane" aria-labelledby="nav-tab-1-4" role="tabpanel">
+<div id="nav-tabpanel-1-4" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-4">
 <p>The associated metadata provides rich and accurate information, and
 the data comes with a clear usage licence and detailed provenance
 information. Reusable data should maintain its initial richness. For
@@ -3647,12 +3640,12 @@ as CC BY 4.0 as per <a href="https://au.creativecommons.net/attributing-cc-mater
 </button>
 </div>
 </nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-1" class="tab-pane show active" aria-labelledby="nav-tab-2-1" role="tabpanel">
+<div id="nav-tabpanel-2-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-1">
 <p>A great place to start is:</p>
 <p>Get yourself an ORCID id. This allows people to find and reach you
 easily. You can even include it in your email signature.</p>
 </div>
-<div id="nav-tabpanel-2-2" class="tab-pane" aria-labelledby="nav-tab-2-2" role="tabpanel">
+<div id="nav-tabpanel-2-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-2">
 <p>Your next move can be:</p>
 <p>Prepare your data, analysis pipelines/protocols and materials for
 FAIR or open publication. Make sure you’ve got your IP and licence
@@ -3749,7 +3742,7 @@ any links that you are not going to use.
  -->
 </div></section><section id="aio-wrapup"><p>Content from <a href="wrapup.html">Wrapping up</a></p>
 <hr>
-<p>Last updated on 2026-02-17 |
+<p>Last updated on 2026-04-21 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/wrapup.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3819,7 +3812,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.0)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -3842,8 +3835,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-md/aio.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/aio.html",
   "dateCreated": "2024-04-01",
-  "dateModified": "2026-04-14",
-  "datePublished": "2026-04-14"
+  "dateModified": "2026-04-21",
+  "datePublished": "2026-04-21"
 }
 
   </script><script>
